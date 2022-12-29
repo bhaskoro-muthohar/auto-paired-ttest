@@ -3,7 +3,7 @@
 """
 
 import unittest
-from src import AutoPairedTest
+from statlibs import AutoPairedTest
 
 class AutoPairedTest_tests:
 
