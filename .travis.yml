@@ -12,6 +12,7 @@ install:
 
 script:
   - python -m unittest tests/paired_test_tests.py
+  - python setup.py sdist bdist_wheel
 
 deploy:
   provider: pypi
