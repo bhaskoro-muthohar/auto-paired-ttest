@@ -14,7 +14,7 @@ import pylab
 import matplotlib
 
 
-class AutoPairedTtest:
+class AutoPairedTest:
     def __init__(self, df, col_dif, col_before, col_after):
         self.df = df
         self.col_dif = col_dif

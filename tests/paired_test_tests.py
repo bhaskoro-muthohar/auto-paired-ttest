@@ -3,9 +3,9 @@
 """
 
 import unittest
-from src import AutoPairedTtest
+from src import AutoPairedTest
 
-class AutoPairedTtest_tests:
+class AutoPairedTest_tests:
 
     def setUp(self):
         array_rand = np.random.randint(100, size=(5, 2))
@@ -14,7 +14,7 @@ class AutoPairedTtest_tests:
         column = ['before', 'after', 'diff']
         df = pd.DataFrame(data = array, columns = column)
 
-        self.auto_paired_ttest = AutoPairedTtest_tests(df)
+        self.auto_paired_test = AutoPairedTest_tests(df)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,5 +1,5 @@
 
-# Auto Paired T-test
+# Auto Paired Test
 
 This module is to automate the inference statistic test of a paired sample.
 
