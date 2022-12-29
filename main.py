@@ -1,4 +1,4 @@
-from src import AutoPairedTtest
+from statlibs import AutoPairedTest
 import pandas as pd
 import numpy as np
 
@@ -10,4 +10,4 @@ column = ["before", "after", "diff"]
 df = pd.DataFrame(data=array, columns=column)
 
 
-AutoPairedTtest(df, "diff", "before", "after").run_test()
+AutoPairedTest(df, "diff", "before", "after").run_test()

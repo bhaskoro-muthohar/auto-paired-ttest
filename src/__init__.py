@@ -1,1 +1,0 @@
-from src.paired_ttest import AutoPairedTtest
