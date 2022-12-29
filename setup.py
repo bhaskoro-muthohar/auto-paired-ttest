@@ -14,7 +14,7 @@ with open(path.join(HERE, 'readme.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="auto-paired-test",
-    version="0.1.1",
+    version="0.2.1",
     description="An automatic paired test",
     long_description=long_description,
     long_description_content_type="text/markdown",
