@@ -46,31 +46,22 @@ class AutoPairedTest:
         ## 1. Anderson
         anderson_test = stats.anderson(self.df[self.col_dif])
         print(f"Anderson Statistic: {anderson_test.statistic}")
+
+        result = None  
+
         for i in range(len(anderson_test.critical_values)):
-            sig_lev, crit_val = (
-                anderson_test.significance_level[i],
-                anderson_test.critical_values[i],
-            )
+            sig_lev, crit_val = (anderson_test.significance_level[i], anderson_test.critical_values[i])
             if anderson_test.statistic < crit_val:
-                print(
-                    f"Probably gaussian : {crit_val} critical value at {sig_lev} level of significance"
-                )
+                print(f"Probably gaussian : {crit_val} critical value at {sig_lev} level of significance")
             else:
-                print(
-                    f"Probably not gaussian : {crit_val} critical value at {sig_lev} level of significance"
-                )
+                print(f"Probably not gaussian : {crit_val} critical value at {sig_lev} level of significance")
+
         for i in range(len(anderson_test.critical_values)):
-            sig_lev, crit_val = (
-                anderson_test.significance_level[i],
-                anderson_test.critical_values[i],
-            )
+            sig_lev, crit_val = (anderson_test.significance_level[i], anderson_test.critical_values[i])
             if sig_lev == sig_lvl:
                 if anderson_test.statistic < crit_val:
-                    print(
-                        stats.ttest_rel(
-                            self.df[self.col_before], self.df[self.col_after]
-                        )
-                    )
+                    result = stats.ttest_rel(self.df[self.col_before], self.df[self.col_after])
+                    print(result)
                 else:
                     # outlier removal
                     df = self.df.loc[
@@ -78,9 +69,8 @@ class AutoPairedTest:
                         & (self.df[self.col_dif] < (Q3 + 1.5 * IQR))
                     ]
 
-                    ## normality re-test
+                    # normality re-test
                     anderson_retest = stats.anderson(df[self.col_dif])
-                    # print(anderson_retest)
 
                     for i in range(len(anderson_retest.critical_values)):
                         sig_lev, crit_val = (
@@ -89,17 +79,13 @@ class AutoPairedTest:
                         )
                         if sig_lev == sig_lvl:
                             if anderson_test.statistic < crit_val:
-                                print(
-                                    stats.ttest_rel(
-                                        df[self.col_before], df[self.col_after]
-                                    )
-                                )
+                                result = stats.ttest_rel(df[self.col_before], df[self.col_after])
+                                print(result)
                             else:
-                                print(
-                                    stats.wilcoxon(
-                                        df[self.col_before], df[self.col_after]
-                                    )
-                                )
+                                result = stats.wilcoxon(df[self.col_before], df[self.col_after])
+                                print(result)
+
+        return result  # Return the result at the end of the method
 
 
 ## to do:
