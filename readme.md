@@ -55,6 +55,24 @@ if outlier_stats['outliers_removed']:
     print(f"Outlier percentage: {outlier_stats['outlier_percentage']:.2f}%")
 ```
 
+
+## Statistical Background
+
+### Paired t-test vs Wilcoxon Signed-Rank Test
+
+- **Paired t-test**: Used when the differences between pairs follow a normal distribution. This test compares the means of two paired groups.
+  
+- **Wilcoxon Signed-Rank Test**: A non-parametric alternative used when the differences do not follow a normal distribution. This test compares the medians of two paired groups.
+
+The package automatically selects the appropriate test based on the normality of your data's difference column.
+
+### Outlier Detection and Handling
+
+Outliers can significantly skew test results, especially in small samples. The package:
+- Identifies outliers using the Interquartile Range (IQR) method
+- Provides detailed statistics about detected outliers
+- Automatically removes outliers when appropriate to improve statistical validity
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

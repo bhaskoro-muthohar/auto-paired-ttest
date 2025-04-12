@@ -116,6 +116,9 @@ class AutoPairedTestTests(unittest.TestCase):
         self.assertIn("outliers_removed", stats)
         self.assertIn("original_sample_size", stats)
         self.assertIn("final_sample_size", stats)
+        self.assertIsNotNone(stats["outliers_removed"])
+        self.assertIsInstance(stats["original_sample_size"], int)
+        self.assertIsInstance(stats["final_sample_size"], int)
 
 if __name__ == '__main__':
     unittest.main()
